@@ -1,5 +1,6 @@
 """
-Generate 3D velocity field on grid of shape (NX, NY, NZ), that has Gaussian pdf, and a given power spectrum Ek with specified normalisation sigmaV and kmax
+Generate 3D velocity field v0 on grid of shape (NX, NY, NZ), that has Gaussian pdf, and a given power spectrum Ek with specified normalisation sigmaV and kmax
+Commented codes: check E(k) and pdf of the generated velocity field v0
 """
 
 import numpy as np
@@ -46,7 +47,7 @@ for i in range(3):
 v0 = np.array(v0)
 
 
-# save generated velocity field
+# save generated velocity field to binary file to be read by Fortran code
 v0.reshape((3,NX,NY,NZ),order='F').tofile('v0_xyz_'+str(NX)+'_'+str(NY)+'_'+str(NZ)+'.dat')
 
 
